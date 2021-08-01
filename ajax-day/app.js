@@ -4,7 +4,7 @@ $(function () {
         const textbox = document.getElementById("zipcode")
         const value = textbox.value
         // urlを設定
-        var send_url = "https://zipcloud.ibsnet.co.jp/doc/api";
+        var send_url = "https://zipcloud.ibsnet.co.jp/api/search";
         // 送るデータを成形する
         var param = { zipcode: zipcode };
         // サーバーと通信(Ajax)
