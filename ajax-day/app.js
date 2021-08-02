@@ -1,19 +1,19 @@
 $(function () {
     $("#serch_btn").click(function () {
+        event.preventDefault ();
         // 入力された値を取得
-        const textbox = document.getElementById("zipcode")
-        const value = textbox.value
+        var zip = $('#zipcode').val();
         // urlを設定
         var send_url = "https://zipcloud.ibsnet.co.jp/api/search";
         // 送るデータを成形する
-        var param = { zipcode: zipcode };
+        var param ={zipcode: $('#zipcode').val()};
         // サーバーと通信(Ajax)
         
         $.ajax({
-            type: POST,
+            type: "POST",
             cache: false,
             data:param,
-            url: send_url,
+            url: "ajax.php",
             dataType: "jsonp"
         })
         .done(function (res) {
@@ -23,6 +23,13 @@ $(function () {
                 $('#zip_result').html(res.message);
             } else {
                 //住所を表示
+                console.log(res)
+                let html = `
+                <div>
+                    <p>${res.zipcode}</p>
+                </div>
+                `;
+
                 $('#zip_result').html(html);
             }
 

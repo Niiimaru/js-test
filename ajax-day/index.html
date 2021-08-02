@@ -7,17 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    <form action=""></form>
+    <form action="" method="POST">
         <h1>郵便番号</h1>
         <!-- 郵便番号入力の検索ボックス -->
         <input type="text" id="zipcode" value="" maxlength="7" required>
         <input type="button" id="serch_btn" value="検索">
         <p>※7桁の半角数字で入力してください</p>
-
+    </form>
     <!-- 検索結果の表示エリア -->
     <div id="zip_result"></div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="./app.js"></script>
 </body>
 </html>
