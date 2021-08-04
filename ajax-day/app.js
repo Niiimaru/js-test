@@ -1,19 +1,18 @@
 $(function () {
     $("#serch_btn").click(function () {
-        event.preventDefault ();
         // 入力された値を取得
-        var zip = $('#zipcode').val();
+        var zipcode = $('#zipcode').val();
         // urlを設定
         var send_url = "https://zipcloud.ibsnet.co.jp/api/search";
         // 送るデータを成形する
-        var param ={zipcode: $('#zipcode').val()};
+        var param = {zipcode: $('#zipcode').val()}
         // サーバーと通信(Ajax)
         
         $.ajax({
             type: "POST",
             cache: false,
             data:param,
-            url: "ajax.php",
+            url: send_url,
             dataType: "jsonp"
         })
         .done(function (res) {
@@ -23,15 +22,19 @@ $(function () {
                 $('#zip_result').html(res.message);
             } else {
                 //住所を表示
-                console.log(res)
-                let html = `
-                <div>
-                    <p>${res.zipcode}</p>
-                </div>
-                `;
-
-                $('#zip_result').html(html);
+                console.log(res.results);
+                var html = ''
+                '<div>都道府県コード：' + result.prefcode + '</div>';
+                '<div>都道府県：' + result.address1 + '</div>';
+                '<div>市区町村：' + result.address2 + '</div>';
+                '<div>町域：' + result.address3 + '</div>';
+                '<div>都道府県(カナ)：' + result.kana1 + '</div>';
+                '<div>市区町村(カナ)：' + result.kana2 + '</div>';
+                '<div>町域(カナ)：' + result.kana3 + '</div>';
+                ;
             }
+
+            $('#zip_result').html(html);
 
         })
         .fail(function (error) {
